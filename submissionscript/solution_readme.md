@@ -1,19 +1,26 @@
-1. Extracting info for TODO list:
-    - update DB by running all sql scripts from dbscripts folder
-    - filenames irregular, might contain gaps(remove spaces)
-    - update based on DB version 
-        - DB version in "versionTable" on row "version"
-        - if DB version match with highest number in dbscripts, no update
-        - all scripts with numbers high than DB version executed in numerical order
-    - update script example for Bash:
-        ./db-update.sh dbscripts myUser myDbServer testTechDb password
-    
-    - languages for update script:
-        - Bash
-        - Python 3
-        - Ruby 2.7
-        - Powershell 7
-    - DB engine:
-        - MySql 8.0
+1. ENVIRONMENT SETUP
+    - created virtual machine in VirtualBox with Ubuntu OS.
+    - install git
+    - install GitHub CLI
+    - install docker
+    - install mysql server
 
-2. 
+2. DEVELOPMENT
+    - Upskilling MySQL
+    - Upskilling BASH scripts
+    - Upskilling docker compose
+    - cloned GitHub repo on local machine
+    - run all sql scripts from mysql terminal
+    - run all sql scripts from BASH on localhost mysql server
+    - created update.sh BASH script file
+    - tested whitespaces removal from filenames with sed (no solution from outside folder)
+    - added solution to remove spaces from filenames(using find and mv BASH functions)
+    - added code for conversion of arguments to variables in BASH
+    - added test for correct variables values( vars prints to terminal with echo)
+    - added code to create DB inside mysql server(removed later as not necesary)
+    - added code to run all script files ending in .sql from specified folder
+    - moved code to remove spaces in filenames after extracting SCRIPTPATH variable
+    - removed unecessary MySQL operations( create DB and create versionTable)
+    - extracted DATABASE version from versionTable
+    - extracted highest number found in filenames at SCRIPTSPATH path
+    - updated this file with all steps
