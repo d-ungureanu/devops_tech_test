@@ -43,7 +43,13 @@ fi
 mysql --user="$DBUSER" --password="$DBPASS" --host=$DBHOST --execute="CREATE DATABASE $DBNAME"
 
 
-# RUN ALL sql SCRIPTS IN FOLDER
+# CREATE versionTable TABLE
+for file in ../$SCRIPTSPATH/seed_data/*.sql; do
+    mysql --host="$DBHOST" --user="$DBUSER" --password="$DBPASS" --database="$DBNAME" < ${file}
+done
+
+
+# RUN ALL sql SCRIPTS IN UPDATES FOLDER
 for f in ../$SCRIPTSPATH/*.sql; do
     mysql --host="$DBHOST" --user="$DBUSER" --password="$DBPASS" --database="$DBNAME" < ${f}
 done
