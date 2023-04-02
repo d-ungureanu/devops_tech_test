@@ -55,11 +55,4 @@ for f in ../$SCRIPTSPATH/*.sql; do
 done
 
 
-# VARIABLES TEST
-# REMOVE 
-echo $SCRIPTSPATH
-echo $DBUSER
-echo $DBHOST
-echo $DBNAME
-echo $DBPASS
 
