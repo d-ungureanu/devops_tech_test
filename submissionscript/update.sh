@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-# REMOVE ALL SPACES FROM FILES NAMES
-find ../dbscripts/ -depth -name '* *.sql' \
-| while IFS= read -r f ; do mv -i "$f" "${f// /_}"; done
+# # REMOVE ALL SPACES FROM FILES NAMES
+# find ../dbscripts/ -depth -name '* *.sql' \
+# | while IFS= read -r f ; do mv -i "$f" "${f// /_}"; done
 
 
 # VARIABLES
@@ -38,5 +38,9 @@ else
   IFS= read -r DBPASS || exit # on EOF
 fi
 
-
+echo $SCRIPTSPATH
+echo $DBUSER
+echo $DBHOST
+echo $DBNAME
+echo $DBPASS
 
