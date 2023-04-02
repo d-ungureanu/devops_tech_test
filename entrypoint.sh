@@ -3,4 +3,5 @@
 # for example:
 # pip3 install mysql-client
 
+# KEEP CONTAINER ALIVE
 sleep infinity

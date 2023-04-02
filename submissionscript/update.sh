@@ -1,11 +1,6 @@
 #!/bin/bash
 
 
-# REMOVE ALL SPACES FROM FILES NAMES
-find ../dbscripts/ -depth -name '* *.sql' \
-| while IFS= read -r f ; do mv -i "$f" "${f// /_}"; done
-
-
 # VARIABLES
 # Extract variables values form script's arguments
 if [ "$#" -ge 1 ]; then
@@ -37,6 +32,10 @@ if [ "$#" -ge 5 ]; then
 else
   IFS= read -r DBPASS || exit # on EOF
 fi
+
+# REMOVE ALL SPACES FROM FILES NAMES
+find ../$SCRIPTSPATH/ -depth -name '* *.sql' \
+| while IFS= read -r f ; do mv -i "$f" "${f// /_}"; done
 
 
 # CREATE DATABASE ON MySql SERVER
