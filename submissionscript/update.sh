@@ -33,19 +33,16 @@ else
   IFS= read -r DBPASS || exit # on EOF
 fi
 
+# DATABASE VERSION
+DBVERS=$(mysql --user=dev --password=123456 --host=mysql_container --database=devopstt -se "SELECT max(version) AS HighestVersion FROM versionTable" | awk '{print $1}')
+FILENUM=$(ls ../$SCRIPTSPATH/*.sql | grep -o '[0-9]\+' | sort -n | tail -1)
+echo DB\'s highest version is: $DBVERS
+echo Highest number in filenames is: $FILENUM
+
+
 # REMOVE ALL SPACES FROM FILES NAMES
 find ../$SCRIPTSPATH/ -depth -name '* *.sql' \
 | while IFS= read -r f ; do mv -i "$f" "${f// /_}"; done
-
-
-# CREATE DATABASE ON MySql SERVER
-mysql --user="$DBUSER" --password="$DBPASS" --host=$DBHOST --execute="CREATE DATABASE $DBNAME"
-
-
-# CREATE versionTable TABLE
-for file in ../$SCRIPTSPATH/seed_data/*.sql; do
-    mysql --host="$DBHOST" --user="$DBUSER" --password="$DBPASS" --database="$DBNAME" < ${file}
-done
 
 
 # RUN ALL sql SCRIPTS IN UPDATES FOLDER
