@@ -38,6 +38,11 @@ else
   IFS= read -r DBPASS || exit # on EOF
 fi
 
+# CREATE DATABASE ON MySql SERVER
+mysql --user="$DBUSER" --password="$DBPASS" --host=$DBHOST --execute="CREATE DATABASE $DBNAME"
+
+# VARIABLES TEST
+# REMOVE 
 echo $SCRIPTSPATH
 echo $DBUSER
 echo $DBHOST
